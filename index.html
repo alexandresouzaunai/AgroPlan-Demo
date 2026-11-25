@@ -9,7 +9,7 @@ body .panel,#trial-app .stats div{background:var(--surface);color:var(--ink);bor
 @media(max-width:820px){.homegroups{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.mast,main{padding-left:16px;padding-right:16px}.pagehead{padding:12px 0 18px}.homegroups{grid-template-columns:1fr;gap:18px}.module-card{min-height:0;padding:13px 31px 13px 15px}.fields,.fields.three{grid-template-columns:1fr}.actions button{max-width:100%}.resultgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.stat{padding:9px}.stat strong{font-size:1.3rem}.wide,.scroll{max-width:100%;overflow-x:auto}}
 @media print{:root{color-scheme:light}.mast,.pagehead .home-link,#book-bar,.homegroups{display:none!important}body,main,.panel,.stat,.total,.hint,#trial-app .stats div,body .panel,input,select,textarea{background:white!important;color:black!important}body :is(h1,h2,h3,span,strong,label,em,p,th,td,summary){color:black!important}.pagehead{padding:0 0 10px}}
-</style><style>.quicktools{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}.quicktools a{background:#304439;padding:9px 13px;border-radius:7px}#toolChoice{margin-bottom:16px}#cvDetails,#avaliacoes details{margin:15px 0}#toolResult .stat strong{overflow-wrap:anywhere}#avaliacoes h2{margin-top:14px}@media print{.quicktools,#avaliacoes>a,#teamCvStatus{display:none}}</style></head><body>
+</style><style>.quicktools{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px}.quicktools a{background:#304439;padding:9px 13px;border-radius:7px}#toolChoice{margin-bottom:16px}#cvDetails,#avaliacoes details{margin:15px 0}#toolResult .stat strong{overflow-wrap:anywhere}#avaliacoes h2{margin-top:14px}@media print{.quicktools,#avaliacoes>a,#teamCvStatus{display:none}}</style><style>@media print{body.ep-print-result main>:not(#estimativa),body.ep-print-result #estimativa>:not(#epHeadline):not(#epStatus):not(#epResults):not(h2){display:none!important}body.ep-print-result .stat{break-inside:avoid}body.ep-print-result .stat strong{font-size:18px}body.ep-print-result .stat{padding:6px}}</style></head><body>
 <header><div class="mast"><a class="brand" data-page href="?"><i class="brandmark" aria-hidden="true"></i>AgroPlan</a><a class="home-link" id="to-home" data-page href="?">Todos os módulos</a></div></header>
 <main><aside hidden id="book-bar"><span id="book-state" role="status"></span> <button class="secondary" id="book-sync">Sincronizar</button> <button class="secondary" id="book-backup">Exportar pendências</button></aside><aside class="context">Modo neste aparelho · <a href="https://agroplan-equipe-unai.beneficialterrapin.chatgpt.site">Entrar na área da equipe</a></aside><div class="pagehead"><h1 tabindex="-1" id="page-title">Módulos de campo</h1></div><section id="inicio" class="homegroups" aria-label="Módulos do AgroPlan"><div class="module-group"><h2>Preparo da safra</h2><a data-page class="module-card" href="?modulo=ferramentas"><strong>Ferramentas do Agrônomo</strong><span>Calculadoras de semeadura, fertilidade, irrigação, operações e colheita.</span></a><a data-page class="module-card featured" href="?modulo=planejamento"><strong>Planejamento</strong><span>Calcule população, sementes por metro e sacos para o plantio.</span></a><a data-page class="module-card " href="?modulo=linhagens"><strong>Linhagens</strong><span>Cadastre materiais e consulte germinação e vigor.</span></a><a data-page class="module-card " href="?modulo=calendario"><strong>Calendário</strong><span>Organize as atividades por data e pivô.</span></a></div><div class="module-group"><h2>Avaliações de campo</h2><a data-page class="module-card " href="?modulo=qualidade-do-plantio"><strong>Qualidade do plantio</strong><span>Confira espaçamentos, CV, falhas e duplas.</span></a><a data-page class="module-card " href="?modulo=florescimento"><strong>Florescimento</strong><span>Registre a liberação de pólen e a receptividade dos estigmas.</span></a><a data-page class="module-card " href="?modulo=despendoamento"><strong>Despendoamento</strong><span>Registre ocorrências e agende reinspeções.</span></a></div><div class="module-group"><h2>Pesquisa e acompanhamento</h2><a data-page class="module-card featured" href="?modulo=estimativa-de-producao"><strong>Estimativa de produção de sementes</strong><span>Conte plantas produtivas e grãos por espiga; compare sacos de sementes por hectare.</span></a><a data-page class="module-card " href="?modulo=pesquisa-de-producao"><strong>Pesquisa de produção</strong><span>Acompanhe ensaios, parcelas e desempenho das linhagens.</span></a><a data-page class="module-card " href="?modulo=painel-diario"><strong>Painel diário</strong><span>Consulte a última vistoria e as pendências de cada pivô.</span></a><a data-page class="module-card " href="?modulo=relatorios"><strong>Relatórios</strong><span>Filtre, imprima ou exporte os registros de campo.</span></a></div></section><div id="planejar" class="layout"><section><div class="panel"><h2>Dados do plantio</h2><div class="fields"><div><label for="fazenda">Fazenda / pivô</label><input id="fazenda" placeholder="Ex.: Fazenda A, pivô 04"></div><div><label for="area">Área total (hectares)</label><input id="area" type="number" min="0.01" step="any" value="71"></div><div><label for="linF">Linhas de fêmea</label><input id="linF" type="number" min="1" step="1" value="5"></div><div><label for="linM">Linhas de macho</label><input id="linM" type="number" min="1" step="1" value="2"></div><div><label for="codF">Código da linhagem fêmea</label><input id="codF" placeholder="Ex.: F001"></div><div><label for="codM">Código da linhagem macho</label><input id="codM" placeholder="Ex.: M001"></div></div>
 <h3>Espaçamentos editáveis (centímetros)</h3><div class="fields three"><div><label for="ff">Fêmea ↔ Fêmea</label><input id="ff" type="number" min="1" step="any" value="50"></div><div><label for="fm">Macho ↔ Fêmea</label><input id="fm" type="number" min="1" step="any" value="70"></div><div><label for="mm">Macho ↔ Macho</label><input id="mm" type="number" min="1" step="any" value="50"></div></div>
@@ -58,7 +58,7 @@ body .panel,#trial-app .stats div{background:var(--surface);color:var(--ink);bor
 <label for="epCounts">Plantas com espiga viável — uma contagem por amostragem</label>
 <textarea id="epCounts" rows="5" style="width:100%;padding:12px" placeholder="38 45 46 57&#10;53 58 51 52"></textarea>
 <p class="small">Separe os valores por espaço, vírgula, ponto e vírgula ou quebra de linha. Inclua zeros quando não houver plantas produtivas. Todas as amostragens devem ter o mesmo número de linhas e comprimento. Considere uma espiga viável por planta; se houver mais, conte espigas viáveis em vez de plantas. Não desconte machos novamente se as contagens já incluírem a área deles.</p>
-<h3>População total e plantas improdutivas (opcional)</h3><label for="epTotalCounts">Total de plantas avaliadas por amostragem (com e sem espiga viável)</label><textarea id="epTotalCounts" rows="4" style="width:100%;padding:12px" placeholder="Ex.: 50 50 50 60"></textarea><p class="small">Use a mesma ordem e quantidade de amostragens da contagem acima. Exemplo: 38 produtivas de 50 plantas avaliadas = 12 improdutivas e 76% produtivas. Se só contou plantas produtivas, deixe este campo vazio. As improdutivas não são descontadas novamente da produtividade.</p><div class="actions"><button type="button" id="epCalculate">Calcular estimativa</button></div><p id="epStatus" role="status"></p><div id="epResults" class="resultgrid" aria-live="polite"></div>
+<h3>População total e plantas improdutivas (opcional)</h3><label for="epTotalCounts">Total de plantas avaliadas por amostragem (com e sem espiga viável)</label><textarea id="epTotalCounts" rows="4" style="width:100%;padding:12px" placeholder="Ex.: 50 50 50 60"></textarea><p class="small">Use a mesma ordem e quantidade de amostragens da contagem acima. Exemplo: 38 produtivas de 50 plantas avaliadas = 12 improdutivas e 76% produtivas. Se só contou plantas produtivas, deixe este campo vazio. As improdutivas não são descontadas novamente da produtividade.</p><div class="actions"><button type="button" id="epCalculate">Calcular estimativa</button></div><p id="epStatus" tabindex="-1" role="status"></p><div id="epHeadline" class="total" tabindex="-1" hidden></div><div class="actions" id="epExport" hidden><button type="button" id="epImage">Baixar resultado em imagem</button><button type="button" class="secondary" id="epPdf">Salvar em PDF</button></div><div id="epResults" class="resultgrid" aria-live="polite"></div>
 <div class="actions"><button type="button" id="epAdd">Adicionar à comparação</button><button type="button" class="secondary" id="epPrint">Imprimir / PDF</button></div>
 <h3>Comparação de materiais</h3><p class="small">Lista da sessão atual, sem sincronização com a equipe. Adicione cada material para comparar. Os sacos são equivalentes de sementes, não sacas de 60 kg.</p>
 <div class="wide"><table><thead><tr><th>Material</th><th>Grãos/espiga</th><th>Espaçamento real</th><th>Bruto após área (sacos/ha)</th><th>Com aproveitamento (sacos/ha)</th><th>Simulação (sacos/ha)</th><th></th></tr></thead><tbody id="epTable"></tbody></table></div>
@@ -1194,9 +1194,9 @@ render();enter();window.addEventListener('agroplan:pagina',enter);
 const $=id=>document.getElementById(id), root=$('estimativa'), fmt=n=>n.toLocaleString('pt-BR',{maximumFractionDigits:2}), entries=[];
 function estimate(p,g,ears,meters,cm,male,recovery,bag){const plants=p*10000/(meters*cm/100),grains=g/ears,bruto=plants*grains*(1-male/100)/bag;return {plants,grains,bruto,net:bruto*recovery/100}}
 function calculate(){
- const result=$('epResults'),status=$('epStatus');result.replaceChildren();status.textContent='';
+ const result=$('epResults'),status=$('epStatus');result.replaceChildren();status.textContent='';$('epHeadline').hidden=true;$('epExport').hidden=true;
  try{
- const read=(id,zero=false,integer=false)=>{const el=$(id),n=Number(el.value);if(el.value.trim()===''||!Number.isFinite(n)||n<0||(!zero&&n===0)||(integer&&!Number.isSafeInteger(n))||!el.checkValidity())throw Error('Confira os campos numéricos e os limites informados.');return n};
+ const read=(id,zero=false,integer=false)=>{const el=$(id),n=Number(el.value);if(el.value.trim()===''||!Number.isFinite(n)||n<0||(!zero&&n===0)||(integer&&!Number.isSafeInteger(n))||!el.checkValidity())throw Error('Confira o campo “'+el.closest('label').textContent.trim()+'”.');return n};
  const raw=$('epCounts').value.trim();if(!raw||!/^\d+(?:[\s,;]+\d+)*$/.test(raw))throw Error('Informe as contagens de plantas como números inteiros separados por espaço, vírgula ou quebra de linha.');
  const counts=raw.split(/[\s,;]+/).map(Number);if(counts.some(n=>!Number.isSafeInteger(n)))throw Error('Contagem inválida.');
  const p=counts.reduce((a,b)=>a+b,0),g=read('epGrains',true,true),ears=read('epEars',false,true),rows=read('epRows',false,true),length=read('epLength'),cm=read('epSpacing'),male=read('epMale',true),recovery=read('epRecovery',true),bag=read('epBag',false,true),meters=counts.length*rows*length,alt=$('epCompare').value.trim()===''?null:read('epCompare');
@@ -1209,20 +1209,55 @@ function calculate(){
  if(values.some(([,n])=>!Number.isFinite(n)))throw Error('Confira a ordem de grandeza dos valores.');
  for(const [label,n] of values){const div=document.createElement('div'),a=document.createElement('span'),b=document.createElement('strong');div.className='stat';a.textContent=label;b.textContent=fmt(n);div.append(a,b);result.append(div)}
  if(ears<16||counts.length<4)status.textContent='Atenção: amostra pequena; amplie a coleta para melhorar a representatividade.';
- return {material:$('epMaterial').value.trim(),cm,alt,main,compare};
+ const material=$('epMaterial').value.trim();
+ const headline=$('epHeadline');
+ headline.textContent=(material?material+' · ':'')+fmt(main.net)+' sacos/ha de '+fmt(bag)+' sementes';
+ headline.hidden=false;
+ $('epExport').hidden=false;
+ return {material,cm,alt,main,compare,values};
  }catch(e){status.textContent=e.message;return null}
 }
 function render(){const body=$('epTable');body.replaceChildren();entries.forEach((e,i)=>{const tr=document.createElement('tr');for(const v of [e.material,fmt(e.main.grains),fmt(e.cm)+' cm',fmt(e.main.bruto),fmt(e.main.net),e.compare?fmt(e.alt)+' cm: '+fmt(e.compare.net):'—']){const td=document.createElement('td');td.textContent=v;tr.append(td)}const td=document.createElement('td'),b=document.createElement('button');b.type='button';b.className='secondary remove';b.textContent='Excluir';b.onclick=()=>{entries.splice(i,1);render()};td.append(b);tr.append(td);body.append(tr)})}
 root.addEventListener('input',calculate);
 $('epCalculate').onclick=()=>{
- const estimate=calculate(), status=$('epStatus');
- if(estimate){
-  const note=status.textContent;
-  status.textContent='Estimativa de produção: '+fmt(estimate.main.net)+' sacos/ha.'+(note?' '+note:'');
- }
+ const target=calculate()?$('epHeadline'):$('epStatus');
+ target.focus({preventScroll:true});
+ target.scrollIntoView({block:'center'});
 };
+$('epImage').onclick=()=>{
+ const report=calculate();
+ if(!report)return;
+ const rows=report.values;
+ const canvas=document.createElement('canvas');
+ canvas.width=1280;
+ canvas.height=240+rows.length*62;
+ const ctx=canvas.getContext('2d');
+ ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);
+ ctx.fillStyle='#155d43';ctx.fillRect(0,0,canvas.width,156);
+ ctx.fillStyle='#ffffff';ctx.font='28px sans-serif';
+ ctx.fillText('AgroPlan · Estimativa de produção de sementes',40,48);
+ ctx.font='bold 40px sans-serif';
+ ctx.fillText($('epHeadline').textContent,40,114,1200);
+ rows.forEach(([label,value],index)=>{
+  const y=162+index*62;
+  ctx.fillStyle=index%2?'#ffffff':'#edf5ef';ctx.fillRect(0,y,1280,62);
+  ctx.fillStyle='#193329';ctx.font='27px sans-serif';ctx.textAlign='left';ctx.fillText(label,40,y+41,880);
+  ctx.font='bold 30px sans-serif';ctx.textAlign='right';ctx.fillText(fmt(value),1240,y+41,300);
+ });
+ ctx.textAlign='left';ctx.font='22px sans-serif';
+ ctx.fillText($('epStatus').textContent||'Projeção com base na amostragem de campo.',40,canvas.height-28,1200);
+ const link=document.createElement('a');
+ link.download='AgroPlan-estimativa.png';link.href=canvas.toDataURL('image/png');
+ document.body.append(link);link.click();link.remove();
+};
+$('epPdf').onclick=()=>{
+ if(!calculate())return;
+ document.body.classList.add('ep-print-result');
+ window.print();
+};
+window.addEventListener('afterprint',()=>document.body.classList.remove('ep-print-result'));
 $('epAdd').onclick=()=>{const e=calculate();if(!e)return;if(!e.material){$('epStatus').textContent='Informe o material para adicionar à comparação.';return}entries.push(e);render()};
-$('epClear').onclick=()=>{entries.length=0;render()};$('epPrint').onclick=()=>{if(calculate()||entries.length)window.print()};
+$('epClear').onclick=()=>{entries.length=0;render()};$('epPrint').onclick=()=>{document.body.classList.remove('ep-print-result');if(calculate()||entries.length)window.print()};
 calculate();
 })();</script></body></html>
 
