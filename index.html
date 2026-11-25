@@ -58,7 +58,7 @@ body .panel,#trial-app .stats div{background:var(--surface);color:var(--ink);bor
 <label for="epCounts">Plantas com espiga viável — uma contagem por amostragem</label>
 <textarea id="epCounts" rows="5" style="width:100%;padding:12px" placeholder="38 45 46 57&#10;53 58 51 52"></textarea>
 <p class="small">Separe os valores por espaço, vírgula, ponto e vírgula ou quebra de linha. Inclua zeros quando não houver plantas produtivas. Todas as amostragens devem ter o mesmo número de linhas e comprimento. Considere uma espiga viável por planta; se houver mais, conte espigas viáveis em vez de plantas. Não desconte machos novamente se as contagens já incluírem a área deles.</p>
-<h3>População total e plantas improdutivas (opcional)</h3><label for="epTotalCounts">Total de plantas avaliadas por amostragem (com e sem espiga viável)</label><textarea id="epTotalCounts" rows="4" style="width:100%;padding:12px" placeholder="Ex.: 50 50 50 60"></textarea><p class="small">Use a mesma ordem e quantidade de amostragens da contagem acima. Exemplo: 38 produtivas de 50 plantas avaliadas = 12 improdutivas e 76% produtivas. Se só contou plantas produtivas, deixe este campo vazio. As improdutivas não são descontadas novamente da produtividade.</p><p id="epStatus" role="status"></p><div id="epResults" class="resultgrid" aria-live="polite"></div>
+<h3>População total e plantas improdutivas (opcional)</h3><label for="epTotalCounts">Total de plantas avaliadas por amostragem (com e sem espiga viável)</label><textarea id="epTotalCounts" rows="4" style="width:100%;padding:12px" placeholder="Ex.: 50 50 50 60"></textarea><p class="small">Use a mesma ordem e quantidade de amostragens da contagem acima. Exemplo: 38 produtivas de 50 plantas avaliadas = 12 improdutivas e 76% produtivas. Se só contou plantas produtivas, deixe este campo vazio. As improdutivas não são descontadas novamente da produtividade.</p><div class="actions"><button type="button" id="epCalculate">Calcular estimativa</button></div><p id="epStatus" role="status"></p><div id="epResults" class="resultgrid" aria-live="polite"></div>
 <div class="actions"><button type="button" id="epAdd">Adicionar à comparação</button><button type="button" class="secondary" id="epPrint">Imprimir / PDF</button></div>
 <h3>Comparação de materiais</h3><p class="small">Lista da sessão atual, sem sincronização com a equipe. Adicione cada material para comparar. Os sacos são equivalentes de sementes, não sacas de 60 kg.</p>
 <div class="wide"><table><thead><tr><th>Material</th><th>Grãos/espiga</th><th>Espaçamento real</th><th>Bruto após área (sacos/ha)</th><th>Com aproveitamento (sacos/ha)</th><th>Simulação (sacos/ha)</th><th></th></tr></thead><tbody id="epTable"></tbody></table></div>
@@ -1214,6 +1214,13 @@ function calculate(){
 }
 function render(){const body=$('epTable');body.replaceChildren();entries.forEach((e,i)=>{const tr=document.createElement('tr');for(const v of [e.material,fmt(e.main.grains),fmt(e.cm)+' cm',fmt(e.main.bruto),fmt(e.main.net),e.compare?fmt(e.alt)+' cm: '+fmt(e.compare.net):'—']){const td=document.createElement('td');td.textContent=v;tr.append(td)}const td=document.createElement('td'),b=document.createElement('button');b.type='button';b.className='secondary remove';b.textContent='Excluir';b.onclick=()=>{entries.splice(i,1);render()};td.append(b);tr.append(td);body.append(tr)})}
 root.addEventListener('input',calculate);
+$('epCalculate').onclick=()=>{
+ const estimate=calculate(), status=$('epStatus');
+ if(estimate){
+  const note=status.textContent;
+  status.textContent='Estimativa de produção: '+fmt(estimate.main.net)+' sacos/ha.'+(note?' '+note:'');
+ }
+};
 $('epAdd').onclick=()=>{const e=calculate();if(!e)return;if(!e.material){$('epStatus').textContent='Informe o material para adicionar à comparação.';return}entries.push(e);render()};
 $('epClear').onclick=()=>{entries.length=0;render()};$('epPrint').onclick=()=>{if(calculate()||entries.length)window.print()};
 calculate();
